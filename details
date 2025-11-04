@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Professional Portfolio</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f3f6f8;
+    color: #333;
+    line-height: 1.6;
+  }
+  a {
+    color: #0077cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #005fa3;
+  }
+
+  /* Container */
+  .container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  header h1 {
+    font-size: 3rem;
+    color: #222;
+    margin-bottom: 8px;
+  }
+  header p {
+    font-size: 1.25rem;
+    color: #555;
+    font-weight: 500;
+  }
+
+  /* Section titles */
+  h2.section-title {
+    font-size: 2rem;
+    color: #0077cc;
+    border-bottom: 3px solid #0077cc;
+    padding-bottom: 6px;
+    margin-bottom: 24px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  h2.section-title::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #0077cc, #00bfff);
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+    animation: slideIn 1s forwards;
+  }
+  @keyframes slideIn {
+    to {
+      left: 0;
+    }
+  }
+
+  /* About */
+  #about {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  /* Skills Section */
+  #skills {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .skill {
+    background: white;
+    flex: 1 1 250px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  .skill:hover {
+    box-shadow: 0 8px 22px rgb(0 0 0 / 0.2);
+  }
+  .skill h3 {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: #0077cc;
+  }
+  .skill p {
+    color: #555;
+  }
+  /* Animated border on hover */
+  .skill::before,
+  .skill::after {
+    content: "";
+    position: absolute;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .skill::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, #00bfff, #0077cc);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+            mask-composite: exclude; 
+  }
+  .skill:hover::before {
+    animation: borderRotate 4s linear infinite;
+    border-color: transparent;
+  }
+  @keyframes borderRotate {
+    0% {background-position: 0% 50%;}
+    100% {background-position: 360% 50%;}
+  }
+
+  /* Projects Section */
+  #projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.08);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+  }
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 8px 28px rgb(0 0 0 / 0.16);
+  }
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .project-content {
+    padding: 18px 20px;
+  }
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0077cc;
+    margin-bottom: 10px;
+  }
+  .project-description {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.4;
+  }
+  .project-links {
+    margin-top: 14px;
+  }
+  .project-links a {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #00aaff;
+  }
+  .project-links a:hover {
+    color: #0077cc;
+  }
+
+  /* Contact Section */
+  #contact {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+  #contact p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  #contact a {
+    color: #0077cc;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  #contact a:hover {
+    color: #005fa3;
+  }
+
+  /* Footer */
+  footer {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>ASHTIK MUKHERJEE</h1>
+    <p>Full Stack Developer | UI/UX Designer | Problem Solver</p>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>Hello! I'm Ashtik, a passionate Full Stack Developer with a knack for building beautiful and efficient web applications. I specialize in JavaScript frameworks, responsive design, and clean UI/UX.</p>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skill" tabindex="0" aria-label="JavaScript skill">
+      <h3>JavaScript</h3>
+      <p>Expertise in ES6+, asynchronous programming, and modern frameworks like React, Vue, and Node.js.</p>
+    </div>
+    <div class="skill" tabindex="0" aria-label="CSS skill">
+      <h3>CSS &amp; Design</h3>
+      <p>Proficient in CSS3, Flexbox, Grid, animations, and responsive design with a focus on accessibility.</p>
+    </div>
+    <div class="skill" tabindex="0" aria-label="Backend skill">
+      <h3>Backend Development</h3>
+      <p>Experience with RESTful APIs, databases like MongoDB, MySQL, express.js, and server deployment.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <article class="project-card" tabindex="0" aria-label="Project Portfolio Website">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Portfolio Website screenshot" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">Portfolio Website</h3>
+        <p class="project-description">A personal portfolio site to showcase projects, CV, and blog using React and styled-components.</p>
+        <div class="project-links">
+          <a href="https://github.com/janedoe/portfolio" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://janedoe.dev" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" tabindex="0" aria-label="Project E-commerce App">
+      <img src="https://images.unsplash.com/photo-1515165562835-c6a7225b2ec6?auto=format&fit=crop&w=800&q=80" alt="Ecommerce App screenshot" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">E-commerce App</h3>
+        <p class="project-description">A fully functional e-commerce application with cart, product filters, and payment integration.</p>
+        <div class="project-links">
+          <a href="https://github.com/janedoe/ecommerce-app" target="_blank" rel="noopener">GitHub</a>
+          <a href="#" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card" tabindex="0" aria-label="Project Task Manager">
+      <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=800&q=80" alt="Task Manager App screenshot" class="project-img" />
+      <div class="project-content">
+        <h3 class="project-title">Task Manager</h3>
+        <p class="project-description">A sleek task management app with drag & drop, due dates, and reminders built in Vue.js and Firebase.</p>
+        <div class="project-links">
+          <a href="https://github.com/janedoe/task-manager" target="_blank" rel="noopener">GitHub</a>
+          <a href="#" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Email me at <a href="mailto:janedoe@example.com">janedoe@example.com</a></p>
+    <p>Or connect on <a href="https://linkedin.com/in/janedoe" target="_blank" rel="noopener">LinkedIn</a> and <a href="https://github.com/janedoe" target="_blank" rel="noopener">GitHub</a></p>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2025 Ashtik Mukherjee Portfolio. All rights reserved.
+</footer>
+
+</body>
+</html>
